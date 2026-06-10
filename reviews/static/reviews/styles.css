@@ -1,0 +1,94 @@
+:root{
+    --clr-bg: #e0e0e0;
+    --clr-form-bg: white;
+    --clr-fg: #232323;
+    --clr-primary: #1e90ff;
+    --clr-on-primary: white;
+    --clr-primary-light: #45a2ff;
+    --clr-primary-light-white: #eff7ff;
+    --clr-error: #ff0000;
+    --clr-error-light-white: #ffe8e8;
+    --field-border-radius: 4px;
+}
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background: var(--clr-bg);
+    color: var(--clr-fg);
+}
+
+.card{
+    max-width: 75%;
+    width: 50rem;
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    background: var(--clr-form-bg);
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.26);
+}
+.form-control{
+    padding-bottom: 24px;
+}
+.form-control label{
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-control input{
+    display: block;
+    outline: none;
+    padding: 0.3rem 1rem;
+    border-radius: var(--field-border-radius);
+    width: 15rem;
+    
+}
+
+.form-control:focus-within label{
+    color: var(--clr-primary);
+}
+
+.form-control input:focus{
+    border-color: var(--clr-primary);
+    background: var(--clr-primary-light-white);
+    
+}
+
+.btn{
+    background: var(--clr-primary);
+    padding: .3rem 2rem;
+    font-weight: bold;
+    border: none;
+    color: var(--clr-on-primary);
+    outline: none;
+    border-radius: var(--field-border-radius);
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: var(--clr-primary-light);
+}
+
+.errors input, .errors input:focus{
+    border-color: var(--clr-error);
+}
+
+.errors input:focus{
+    background-color: var(--clr-error-light-white);
+}
+
+.errors label, .errors:focus-within label{
+    color: var(--clr-error);
+}
+
+.errorlist{
+    color: var(--clr-error);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.errorlist li{
+    margin: 0.3rem 0;
+}
