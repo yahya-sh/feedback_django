@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from . import forms
 from django.views import View
+from django.views.generic import TemplateView
 from . import models
 
 # Create your views here.
@@ -19,6 +20,7 @@ from . import models
 #             "form": form,
 #         },
 #     )
+
 
 class ReviewView(View):
     def get(self, request):
@@ -46,5 +48,5 @@ class ReviewView(View):
         )
 
 
-def thank_you(request):
-    return render(request, "reviews/thank_you.html")
+class ThankYouView(TemplateView):
+    template_name = "reviews/thank_you.html"
