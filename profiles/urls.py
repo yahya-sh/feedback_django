@@ -5,5 +5,5 @@ from . import views
 app_name = "profiles"
 
 urlpatterns = [
-    path("", views.CreateProfileView.as_view(), name="upload"),
+    path("", views.CreateUserProfileView.as_view(), name="upload"),
 ]
