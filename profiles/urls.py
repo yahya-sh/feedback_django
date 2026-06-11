@@ -6,4 +6,5 @@ app_name = "profiles"
 
 urlpatterns = [
     path("", views.CreateUserProfileView.as_view(), name="upload"),
+    path("all/", views.AllUserProfileList.as_view(), name="all"),
 ]
