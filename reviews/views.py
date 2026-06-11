@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from . import forms
 from django.views import View
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, FormView
 from . import models
 
 # Create your views here.
@@ -13,30 +14,16 @@ class AllReviewsList(ListView):
     context_object_name = "reviews"
 
 
-class ReviewView(View):
-    def get(self, request):
-        form = forms.ReviewForm()
-        return render(
-            request,
-            "reviews/review.html",
-            {
-                "form": form,
-            },
-        )
+class ReviewView(FormView):
+    form_class = forms.ReviewForm
+    template_name = "reviews/review.html"
 
-    def post(self, request):
-        form = forms.ReviewForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("thank-you")
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
-        return render(
-            request,
-            "reviews/review.html",
-            {
-                "form": form,
-            },
-        )
+    def get_success_url(self):
+        return reverse("thank-you")
 
 
 class ThankYouView(TemplateView):
