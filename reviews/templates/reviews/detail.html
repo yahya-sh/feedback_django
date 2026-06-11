@@ -9,5 +9,16 @@
     <h2>{{ review.username }}</h2>
     <p>Rating: ({{ review.rating }} of 5)</p>
     <p>{{ review.feedback }}</p>
+    {% if is_favourite %}
+      <p>
+        <strong>This is your favourite review!</strong>
+      </p>
+    {% else %}
+      <form action="{% url 'favourite' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="review_id" value="{{ review.pk }}" />
+        <button class="btn">Favourite</button>
+      </form>
+    {% endif %}
   </div>
 {% endblock %}
