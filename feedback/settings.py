@@ -124,3 +124,5 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     PROJECT_DIR / "static",
 ]
+
+MEDIA_ROOT = BASE_DIR / "uploads"

@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views import View
-
+from . import forms
+from . import models
 # Create your views here.
 
 
@@ -17,11 +18,25 @@ def save_jpg_image(image):
 
 class CreateProfileView(View):
     def get(self, request):
-        return render(request, "profiles/create_profile.html")
+        form = forms.UserProfileForm()
+        return render(
+            request,
+            "profiles/create_profile.html",
+            {
+                "form": form,
+            },
+        )
 
     def post(self, request):
-        image = request.FILES["image"]
-        print(image)
-        print(type(image))
-        save_jpg_image(image)
-        return redirect("profiles:upload")
+        form = forms.UserProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = models.UserProfile(**form.cleaned_data)
+            profile.save()
+            return redirect("profiles:upload")
+        return render(
+            request,
+            "profiles/create_profile.html",
+            {
+                "form": form,
+            },
+        )
