@@ -6,4 +6,5 @@ urlpatterns = [
     path("", views.ReviewView.as_view(), name="review"),
     path("thank-you/", views.ThankYouView.as_view(), name="thank-you"),
     path("all/", views.AllReviewsList.as_view(), name="review-list"),
+    path("<int:pk>/", views.ReviewDetail.as_view(), name="detail"),
 ]

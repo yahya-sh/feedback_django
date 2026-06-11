@@ -13,6 +13,7 @@
           <p>Rating: ({{ review.rating }} of 5)</p>
           <p>{{ review.feedback }}</p>
         </li>
+        <a href="{{review.get_absolute_url}}">Show Details -&gt;</a>
       {% endfor %}
     </ul>
   </div>

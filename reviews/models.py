@@ -1,5 +1,6 @@
 from django.db import models
 from django.core import validators
+from django.urls import reverse
 
 
 # Create your models here.
@@ -17,6 +18,9 @@ class Review(models.Model):
             validators.MaxValueValidator(5),
         ]
     )
+
+    def get_absolute_url(self):
+        return reverse("detail", kwargs={"pk": self.pk})
 
     def __str__(self):
         return f"{self.username} (Rate {self.rating} of 5)"
