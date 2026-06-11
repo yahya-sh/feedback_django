@@ -11,11 +11,14 @@ def set_faviourite_review_id(request, id):
 
 
 def get_faviourite_review_id(request):
-    request.session.get("favourite_review_id")
+    return request.session.get("favourite_review_id")
 
 
 def is_favourite_review_id(request, id):
-    return get_faviourite_review_id(request, id) == str(id)
+    print(str(id))
+    print(get_faviourite_review_id(request))
+    print(get_faviourite_review_id(request) == str(id))
+    return get_faviourite_review_id(request) == str(id)
 
 
 class AllReviewsList(ListView):
@@ -31,6 +34,11 @@ class ReviewView(CreateView):
 
     def get_success_url(self):
         return reverse("thank-you")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["favourite_review_id"] = get_faviourite_review_id(self.request)
+        return context
 
 
 class ThankYouView(TemplateView):
