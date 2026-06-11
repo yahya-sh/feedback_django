@@ -1,25 +1,16 @@
 from django.shortcuts import render, redirect
 from . import forms
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from . import models
 
 # Create your views here.
-# def review(request):
-#     form = forms.ReviewForm(request.POST if request.method == "POST" else None)
-#     if request.method == "POST":
-#         if form.is_valid():
-#             # review = models.Review(**form.cleaned_data)
-#             # review.save()
-#             form.save()
-#             return redirect("thank-you")
-#     return render(
-#         request,
-#         "reviews/review.html",
-#         {
-#             "form": form,
-#         },
-#     )
+
+
+class AllReviewsList(ListView):
+    model = models.Review
+    template_name = "reviews/list.html"
+    context_object_name = "reviews"
 
 
 class ReviewView(View):

@@ -6,6 +6,8 @@
     --clr-on-primary: white;
     --clr-primary-light: #45a2ff;
     --clr-primary-light-white: #eff7ff;
+    --clr-secondary: #5d5d5d;
+    --clr-secondary-light: #7f7f7f;
     --clr-error: #ff0000;
     --clr-error-light-white: #ffe8e8;
     --field-border-radius: 6px;
@@ -28,6 +30,13 @@ body{
     border-radius: 12px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.26);
 }
+
+.section-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .form-control{
     padding-bottom: 24px;
 }
@@ -65,10 +74,18 @@ body{
     outline: none;
     border-radius: var(--field-border-radius);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .btn:hover{
     background: var(--clr-primary-light);
+}
+
+.btn-secondary{
+    background: var(--clr-secondary);
+}
+.btn-secondary:hover{
+    background: var(--clr-secondary-light);
 }
 
 .errors input, .errors input:focus{
